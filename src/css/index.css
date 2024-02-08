@@ -90,19 +90,6 @@ input {
   border: 1px solid #808080;
 }
 
-input:hover {
-  stroke: black;
-}
-
-input:focus {
-  stroke: black;
-}
-
-input:active + label::after {
-  content: 'Type area';
-  color: #808080;
-}
-
 textarea {
   width: 360px;
   min-height: 80px;
