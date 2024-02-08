@@ -12,10 +12,23 @@
   </head>
   <body>
     <ul class="gallery"></ul>
+
+    <form class="feedback-form" autocomplete="off">
+  <label>
+    Email
+    <input type="email" name="email" autofocus />
+  </label>
+  <label>
+    Message
+    <textarea name="message" rows="8"></textarea>
+  </label>
+  <button type="submit">Submit</button>
+</form>
+
     <!-- ❗️❗️❗️ Add partials like so for every page -->
     <include src="./partials/header.html"></include>
-    <include src="./1-gallery.html"></include>
-    <include src="./2-form.html"></include>
+    <!-- <include src="./1-gallery.html"></include>
+    <include src="./2-form.html"></include> -->
 
     
     
