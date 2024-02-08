@@ -45,7 +45,7 @@ button {
   padding: 8px 16px;
   width: 95px;
   height: 40px;
-  background: #4e75ff;
+  background-color: #4e75ff;
 
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -53,7 +53,19 @@ button {
   line-height: 1.5;
   letter-spacing: 0.04em;
   color: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+button:hover {
+  background-color: #6c8cff;
+}
+button:focus {
+  background-color: #6c8cff;
+}
+
 label {
   gap: 8px;
   color: #2e2f42;
@@ -69,12 +81,23 @@ label {
   flex-direction: column;
   align-items: flex-start;
 }
+
 input {
   gap: 8px;
   width: 360px;
   min-height: 40px;
   border-radius: 4px;
   border: 1px solid #808080;
+}
+
+input:hover,
+input:focus {
+  stroke: black;
+}
+
+input:active + label::after {
+  content: 'Type area';
+  color: #808080;
 }
 
 textarea {
