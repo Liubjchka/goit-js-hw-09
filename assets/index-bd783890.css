@@ -1,1 +1,0 @@
-body{box-sizing:border-box;margin:0 auto;background-color:#fff}.gallery{display:flex;flex-wrap:wrap;max-width:1440px;padding:24px 156px;gap:24px}li{list-style-type:none}.gallery-image{width:360px;height:200px;flex-shrink:0}.gallery-image:hover{transform:scale(1.04)}
