@@ -1,44 +1,43 @@
 const formEl = document.querySelector('.feedback-form');
 const LOCAL_STORAGE_KEY = 'feedback-form-state';
 
+const dataLocalStorage = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+
+if (dataLocalStorage) {
+  formEl.elements.email.value = dataLocalStorage.email || '';
+  formEl.elements.message.value = dataLocalStorage.message || '';
+}
+
+// Збереження даних при введенні у локальному сховищі
 formEl.addEventListener('input', event => {
-  const { name, value } = event.target;
-  const formData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || {};
-  formData[name] = value.trim();
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formData));
+  const formDataEl = {
+    email: formEl.elements.email.value.trim(),
+    message: formEl.elements.message.value.trim(),
+  };
 
-  const allFieldsFilled = Array.from(formEl.elements).every(
-    field => field.value.trim() !== ''
-  );
-
-  if (allFieldsFilled) {
-    formEl.querySelector('button').removeAttribute('disabled');
-  } else {
-    formEl.querySelector('button').setAttribute('disabled', 'disabled');
-  }
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formDataEl));
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const dataObj = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || {};
-  new FormData(formEl).forEach((value, key) => {
-    dataObj[key] = value;
-  });
-  const allFieldsFilled = Array.from(formEl.elements).every(
-    field => field.value.trim() !== ''
-  );
-
-  if (allFieldsFilled) {
-    formEl.querySelector('button').removeAttribute('disabled');
-  } else {
-    formEl.querySelector('button').setAttribute('disabled', 'disabled');
-  }
-});
-
+// Додавання слухача подій при сабміті форми
 formEl.addEventListener('submit', event => {
   event.preventDefault();
-  const formDataEl = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || {};
+
+  if (
+    formEl.elements.email.value === '' ||
+    formEl.elements.message.value === ''
+  ) {
+    alert(`All form fields must be filled in`);
+    return;
+  }
+
+  const formDataEl = {
+    email: formEl.elements.email.value.trim(),
+    message: formEl.elements.message.value.trim(),
+  };
+
+  // виведення даних в консоль перед видаленням
   console.log(formDataEl);
+
   localStorage.removeItem(LOCAL_STORAGE_KEY);
   formEl.reset();
-  formEl.querySelector('button').setAttribute('disabled', 'disabled');
 });

@@ -86,14 +86,8 @@ const galleryItemsEl = images
 galleryEl.innerHTML = galleryItemsEl;
 
 const optionsEl = {
-  overlayOpacity: 0.7,
   captionDelay: 250,
-  captions: true,
-  captionSelector: 'img',
-  captionType: 'attr',
   captionsData: 'alt',
-  captionPosition: 'bottom',
 };
 
 const lightboxEl = new SimpleLightbox('.gallery a', optionsEl);
-lightboxEl.on('show.simplelightbox');
